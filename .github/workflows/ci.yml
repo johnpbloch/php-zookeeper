@@ -18,6 +18,8 @@ jobs:
           - 2181:2181
     steps:
     - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo apt-get install libcppunit-dev
     - name: Install libzookeeper
       run: ./.travis/install_libzookeeper.sh ${{ matrix.zk_version }}
     - name: phpize
