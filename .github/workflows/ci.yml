@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        zk_version: ['3.5.8', '3.6.2']
+    services:
+      zookeeper: 
+        image: zookeeper
+        ports:
+          - 2181:2181
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install libzookeeper
+      run: ./.travis/install_libzookeeper.sh ${{ matrix.zk_version }}
+    - name: phpize
+      run: phpize
+    - name: configure
+      run: ./configure --with-libzookeeper-dir=./libzookeeper-${{ matrix.zk_version }}
+    - name: make
+      run: make clean all
