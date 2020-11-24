@@ -21,7 +21,9 @@ cd ${PACKAGE_NAME}-bin
 ${TRAVIS_SCRIPT_DIR}/init_zk_instances.sh || exit 1
 ${TRAVIS_SCRIPT_DIR}/launch_zk_instances.sh || exit 1
 cd ..
-cd ${PACKAGE_NAME}/zookeeper-client/zookeeper-client-c
+cd ${PACKAGE_NAME}
+ant compile_jute
+cd zookeeper-client/zookeeper-client-c
 autoreconf -if
 ./configure --prefix=${LIBZOOKEEPER_PREFIX} || exit 1
 make || exit 1
