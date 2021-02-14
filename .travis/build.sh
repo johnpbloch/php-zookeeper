@@ -8,8 +8,7 @@ phpize || exit 1
 CFLAGS="--coverage -fprofile-arcs -ftest-coverage" \
 LDFLAGS="--coverage" \
 ./configure --with-libzookeeper-dir=${LIBZOOKEEPER_PREFIX} || exit 1
-make clean all &&
-make install || exit 1
+make clean all || exit 1
 
 lcov --directory . --zerocounters &&
 lcov --directory . --capture --initial --output-file coverage.info
