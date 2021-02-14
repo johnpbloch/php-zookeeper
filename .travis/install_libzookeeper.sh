@@ -18,11 +18,11 @@ LIBZOOKEEPER_PREFIX=${HOME}/lib${URL_DIR_NAME}
 
 TRAVIS_SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-wget ${URL_PREFIX}/${URL_DIR_NAME}/${PACKAGE_NAME}.tar.gz || exit 1
+wget -q ${URL_PREFIX}/${URL_DIR_NAME}/${PACKAGE_NAME}.tar.gz || exit 1
 tar xzf ${PACKAGE_NAME}.tar.gz || exit 1
 
 if [ ${LIBZOOKEEPER_COMP_VERSION} -ge 30500 ]; then
-    wget ${URL_PREFIX}/${URL_DIR_NAME}/${PACKAGE_NAME}-bin.tar.gz || exit 1
+    wget -q ${URL_PREFIX}/${URL_DIR_NAME}/${PACKAGE_NAME}-bin.tar.gz || exit 1
     tar xzf ${PACKAGE_NAME}-bin.tar.gz || exit 1
     cd ${PACKAGE_NAME}-bin
     ${TRAVIS_SCRIPT_DIR}/init_zk_instances.sh || exit 1
