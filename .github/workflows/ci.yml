@@ -25,6 +25,6 @@ jobs:
     - name: phpize
       run: phpize
     - name: configure
-      run: ./configure --with-libzookeeper-dir=~/libzookeeper-${{ matrix.zk_version }}
+      run: ./configure --with-libzookeeper-dir=/home/runner/libzookeeper-${{ matrix.zk_version }}
     - name: make
       run: make clean all
