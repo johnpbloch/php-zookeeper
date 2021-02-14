@@ -35,7 +35,7 @@ fi
 
 if [ ${LIBZOOKEEPER_COMP_VERSION} -ge 30500 ]; then
     cd ${PACKAGE_NAME}
-    mvn -DskipTests -pl zookeeper-jute compile
+    mvn -q -DskipTests -pl zookeeper-jute compile
     cd zookeeper-client/zookeeper-client-c
     autoreconf -if
 else
