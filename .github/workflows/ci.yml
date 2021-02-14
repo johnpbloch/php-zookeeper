@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  build:
+    continue-on-error: ${{ matrix.may_fail }}
+    runs-on: ubuntu-16.04
+    strategy:
+      fail-fast: false
+      matrix:
+        zk_version: ['3.4', '3.5']
+        php_version: ['7.0', '7.1', '7.2', '7.3', '7.4']
+        may_fail: [false]
+        include:
+          - zk_version: '3.4'
+            php_version: '8.0'
+            may_fail: true
+          - zk_version: '3.5'
+            php_version: '8.0'
+            may_fail: true
+          - zk_version: '3.6'
+            php_version: '7.0'
+            may_fail: true
+          - zk_version: '3.6'
+            php_version: '7.1'
+            may_fail: true
+          - zk_version: '3.6'
+            php_version: '7.2'
+            may_fail: true
+          - zk_version: '3.6'
+            php_version: '7.3'
+            may_fail: true
+          - zk_version: '3.6'
+            php_version: '7.4'
+            may_fail: true
+          - zk_version: '3.6'
+            php_version: '8.0'
+            may_fail: true
+    # services:
+    #   zookeeper:
+    #     image: zookeeper:${{ matrix.zk_version }}
+    #     ports:
+    #       - 2181:2181
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php_version }}
+        tools: phpize, php-config
+    - id: get-zk-version
+      run: |
+        version=$(curl http://archive.apache.org/dist/zookeeper/ 2>/dev/null | grep "zookeeper-${{ matrix.zk_version }}." | sed -E 's=.+>(zookeeper-[0-9.]+)/<.+=\1=g' | grep -P '^zookeeper-' | sort -V | tail -n1 |cut -d'-' -f2)
+        echo "::set-output name=version::$version"
+    - name: Install dependencies
+      run: sudo apt-get install libcppunit-dev lcov
+    - name: Install libzookeeper
+      run: ./.travis/install_libzookeeper.sh ${{ steps.get-zk-version.outputs.version }}
+    - name: build
+      run: ./.travis/build.sh ${{ steps.get-zk-version.outputs.version }}

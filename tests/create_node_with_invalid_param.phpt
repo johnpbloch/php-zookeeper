@@ -7,7 +7,7 @@ if (!extension_loaded('zookeeper'))
 ?>
 --FILE--
 <?php
-$client = new Zookeeper('localhost:2181');
+$client = new Zookeeper('127.0.0.1:2181');
 $client->create('/test5', array());
 --EXPECTF--
 Warning: Zookeeper::create() expects parameter 2 to be string, array given in %s on line %d

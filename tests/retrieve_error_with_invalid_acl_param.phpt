@@ -7,7 +7,7 @@ if (!extension_loaded('zookeeper'))
 ?>
 --FILE--
 <?php
-$client = new Zookeeper('localhost:2181');
+$client = new Zookeeper('127.0.0.1:2181');
 $client->getAcl(array());
 --EXPECTF--
 Warning: Zookeeper::getAcl() expects parameter %d to be string, array given in %s on line %d

@@ -8,7 +8,7 @@ if (!extension_loaded('zookeeper'))
 --FILE--
 <?php
 try {
-    $client = new Zookeeper('localhost:2181', null, -1);
+    $client = new Zookeeper('127.0.0.1:2181', null, -1);
 } catch (ZookeeperException $ze) {
     printf("%s\n%d", $ze->getMessage(), $ze->getCode());
 }

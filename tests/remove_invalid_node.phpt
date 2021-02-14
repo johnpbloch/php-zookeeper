@@ -7,7 +7,7 @@ if (!extension_loaded('zookeeper'))
 ?>
 --FILE--
 <?php
-$client = new Zookeeper('localhost:2181');
+$client = new Zookeeper('127.0.0.1:2181');
 try {
     echo $client->delete('/10');
 } catch (ZookeeperNoNodeException $znne) {

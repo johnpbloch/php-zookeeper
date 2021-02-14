@@ -9,7 +9,7 @@ if (!extension_loaded('zookeeper'))
 --FILE--
 <?php
 $fh = fopen('/dev/null', 'w');
-$client = new Zookeeper('localhost:2181');
+$client = new Zookeeper('127.0.0.1:2181');
 $client->setLogStream($fh);
 $cbTriggered = false;
 echo $client->addAuth('test', 'test', function() use(&$cbTriggered) {

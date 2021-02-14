@@ -2,7 +2,7 @@
 Basic session should work
 --INI--
 session.save_handler=zookeeper
-session.save_path=localhost:2181
+session.save_path=127.0.0.1:2181
 --SKIPIF--
 <?php
 if (!extension_loaded('zookeeper'))
