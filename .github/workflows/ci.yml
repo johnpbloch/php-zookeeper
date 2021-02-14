@@ -56,9 +56,5 @@ jobs:
       run: sudo apt-get install libcppunit-dev lcov
     - name: Install libzookeeper
       run: ./.travis/install_libzookeeper.sh ${{ matrix.zk_version }}
-    - name: phpize
-      run: phpize
-    - name: configure
-      run: ./configure --with-libzookeeper-dir=/home/runner/libzookeeper-${{ matrix.zk_version }}
     - name: build
-      run: ./.travis/build.sh
+      run: ./.travis/build.sh ${{ matrix.zk_version }}
