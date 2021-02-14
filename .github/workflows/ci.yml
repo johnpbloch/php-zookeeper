@@ -40,11 +40,11 @@ jobs:
           - zk_version: '3.6'
             php_version: '8.0'
             may_fail: true
-    services:
-      zookeeper:
-        image: zookeeper:${{ matrix.zk_version }}
-        ports:
-          - 2181:2181
+    # services:
+    #   zookeeper:
+    #     image: zookeeper:${{ matrix.zk_version }}
+    #     ports:
+    #       - 2181:2181
     steps:
     - uses: actions/checkout@v2
     - name: Setup PHP
