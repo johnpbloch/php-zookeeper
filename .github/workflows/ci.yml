@@ -11,6 +11,7 @@ jobs:
     strategy:
       matrix:
         zk_version: ['3.4.14', '3.5.9', '3.6.2']
+        php_version: ['7.1', '7.2', '7.3', '7.4']
     services:
       zookeeper:
         image: zookeeper
@@ -18,6 +19,11 @@ jobs:
           - 2181:2181
     steps:
     - uses: actions/checkout@v2
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php_version }}
+        tools: phpize, php-config
     - name: Install dependencies
       run: sudo apt-get install libcppunit-dev ant
     - name: Install libzookeeper
