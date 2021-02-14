@@ -53,7 +53,7 @@ jobs:
         php-version: ${{ matrix.php_version }}
         tools: phpize, php-config
     - name: Install dependencies
-      run: sudo apt-get install libcppunit-dev ant
+      run: sudo apt-get install libcppunit-dev lcov
     - name: Install libzookeeper
       run: ./.travis/install_libzookeeper.sh ${{ matrix.zk_version }}
     - name: phpize
