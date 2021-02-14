@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        zk_version: ['3.5.8', '3.6.2']
+        zk_version: ['3.4.14', '3.5.9', '3.6.2']
     services:
-      zookeeper: 
+      zookeeper:
         image: zookeeper
         ports:
           - 2181:2181
