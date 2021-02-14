@@ -14,7 +14,6 @@ addons:
   apt:
     packages:
       - lcov
-      - ant
       - libcppunit-dev
 
 sudo: false
