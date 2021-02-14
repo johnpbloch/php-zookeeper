@@ -60,5 +60,5 @@ jobs:
       run: phpize
     - name: configure
       run: ./configure --with-libzookeeper-dir=/home/runner/libzookeeper-${{ matrix.zk_version }}
-    - name: make
-      run: make clean all
+    - name: build
+      run: ./.travis/build.sh
