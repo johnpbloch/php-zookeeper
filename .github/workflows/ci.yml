@@ -7,11 +7,24 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.may_fail }}
+    runs-on: ubuntu-16.04
     strategy:
+      fail-fast: false
       matrix:
         zk_version: ['3.4.14', '3.5.9', '3.6.2']
-        php_version: ['7.1', '7.2', '7.3', '7.4']
+        php_version: ['7.0', '7.1', '7.2', '7.3', '7.4']
+        may_fail: [false]
+        include:
+          - zk_version: '3.4.14'
+            php_version: '8.0'
+            may_fail: true
+          - zk_version: '3.5.9'
+            php_version: '8.0'
+            may_fail: true
+          - zk_version: '3.6.2'
+            php_version: '8.0'
+            may_fail: true
     services:
       zookeeper:
         image: zookeeper
