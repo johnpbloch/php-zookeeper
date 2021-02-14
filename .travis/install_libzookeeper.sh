@@ -26,11 +26,11 @@ if [ ${LIBZOOKEEPER_COMP_VERSION} -ge 30500 ]; then
     tar xzf ${PACKAGE_NAME}-bin.tar.gz || exit 1
     cd ${PACKAGE_NAME}-bin
     ${TRAVIS_SCRIPT_DIR}/init_zk_instances.sh || exit 1
-    ${TRAVIS_SCRIPT_DIR}/launch_zk_instances.sh || exit 1
+    # ${TRAVIS_SCRIPT_DIR}/launch_zk_instances.sh || exit 1
     cd ..
 else
     mv ${PACKAGE_NAME}/conf/zoo_sample.cfg ${PACKAGE_NAME}/conf/zoo.cfg
-    ${PACKAGE_NAME}/bin/zkServer.sh start
+    # ${PACKAGE_NAME}/bin/zkServer.sh start
 fi
 
 if [ ${LIBZOOKEEPER_COMP_VERSION} -ge 30500 ]; then
