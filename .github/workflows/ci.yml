@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        zk_version: ['3.4.14', '3.5.9', '3.6.2']
+        zk_version: ['3.4.14', '3.5.9']
         php_version: ['7.0', '7.1', '7.2', '7.3', '7.4']
         may_fail: [false]
         include:
@@ -21,6 +21,21 @@ jobs:
             may_fail: true
           - zk_version: '3.5.9'
             php_version: '8.0'
+            may_fail: true
+          - zk_version: '3.6.2'
+            php_version: '7.0'
+            may_fail: true
+          - zk_version: '3.6.2'
+            php_version: '7.1'
+            may_fail: true
+          - zk_version: '3.6.2'
+            php_version: '7.2'
+            may_fail: true
+          - zk_version: '3.6.2'
+            php_version: '7.3'
+            may_fail: true
+          - zk_version: '3.6.2'
+            php_version: '7.4'
             may_fail: true
           - zk_version: '3.6.2'
             php_version: '8.0'
