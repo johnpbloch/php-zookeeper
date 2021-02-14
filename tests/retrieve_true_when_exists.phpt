@@ -7,7 +7,7 @@ if (!extension_loaded('zookeeper'))
 ?>
 --FILE--
 <?php
-$client = new Zookeeper('localhost:2181');
+$client = new Zookeeper('127.0.0.1:2181');
 $client->create('/test1', '', array(
     array(
         'perms' => Zookeeper::PERM_ALL,
@@ -18,7 +18,7 @@ $client->create('/test1', '', array(
 var_dump(is_array($client->exists('/test1')));
 --CLEAN--
 <?php
-$client = new Zookeeper('localhost:2181');
+$client = new Zookeeper('127.0.0.1:2181');
 
 if ($client->exists('/test1')) {
     $client->delete('/test1');

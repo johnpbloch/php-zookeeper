@@ -7,7 +7,7 @@ if (!extension_loaded('zookeeper'))
 ?>
 --FILE--
 <?php
-$client = new Zookeeper('localhost:2181');
+$client = new Zookeeper('127.0.0.1:2181');
 $acl = $client->getAcl('/zookeeper');
 echo $acl[1][0]['perms'] === Zookeeper::PERM_ALL;
 echo $acl[1][0]['scheme'];

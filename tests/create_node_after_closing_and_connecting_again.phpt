@@ -7,14 +7,14 @@ if (!extension_loaded('zookeeper'))
 ?>
 --FILE--
 <?php
-$client = new Zookeeper('localhost:2181');
+$client = new Zookeeper('127.0.0.1:2181');
 
 if ($client->exists('/test6')) {
     $client->delete('/test6');
 }
 
 $client->close();
-$client->connect('localhost:2181');
+$client->connect('127.0.0.1:2181');
 
 echo $client->create('/test6', null, array(
     array(

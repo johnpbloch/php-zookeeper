@@ -15,7 +15,7 @@ $acls = array(
         'id'    => 'anyone'
     )
 );
-$zk = new Zookeeper('localhost:2181');
+$zk = new Zookeeper('127.0.0.1:2181');
 $zk->create($path, null, $acls);
 $stats = array();
 $zk->get($path, NULL, $stats);
