@@ -7,7 +7,7 @@ if (!extension_loaded('zookeeper'))
 ?>
 --FILE--
 <?php
-$client = new Zookeeper('localhost:2181');
+$client = new Zookeeper('127.0.0.1:2181');
 
 if ($client->exists('/retrieve_children_with_watcher_callback')) {
     $client->delete('/retrieve_children_with_watcher_callback');

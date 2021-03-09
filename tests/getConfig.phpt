@@ -11,7 +11,7 @@ if (!class_exists('ZookeeperConfig'))
 --FILE--
 <?php
 $client = new Zookeeper();
-$client->connect('localhost:2181');
+$client->connect('127.0.0.1:2181');
 $zkConfig = $client->getConfig();
 $rc = new ReflectionClass($zkConfig);
 echo $rc->getName();

@@ -8,6 +8,6 @@ if (!extension_loaded('zookeeper'))
 --FILE--
 <?php
 $client = new Zookeeper();
-echo gettype($client->connect('localhost:2181'));
+echo gettype($client->connect('127.0.0.1:2181'));
 --EXPECT--
 NULL

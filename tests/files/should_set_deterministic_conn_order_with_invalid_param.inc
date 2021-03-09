@@ -1,3 +1,3 @@
 <?php
-$client = new Zookeeper('localhost:2181');
+$client = new Zookeeper('127.0.0.1:2181');
 $client->setDeterministicConnOrder(array());

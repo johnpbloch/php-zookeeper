@@ -13,6 +13,6 @@ files/construct_with_invalid_param.inc
 --EXPECTF--
 Fatal error: Uncaught TypeError: Zookeeper::__construct(): Argument #%d ($watcher_cb) must be a valid callback or null, no array or string given in %s:%d
 Stack trace:
-#0 %s(%d): Zookeeper->__construct('localhost:2181', 10)
+#0 %s(%d): Zookeeper->__construct('127.0.0.1:2181', 10)
 #1 {main}
   thrown in %s on line %d
